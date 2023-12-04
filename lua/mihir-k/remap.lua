@@ -22,8 +22,8 @@ vim.keymap.set("x", "<leader>p", [["_dP]])
 vim.keymap.set({"n", "v"}, "<leader>y", [["+y]])
 vim.keymap.set("n", "<leader>Y", [["+Y]])
 
-vim.keymap.set("n", "Q", "<nop>")
-
+-- Quit but do not quit
+vim.keymap.set("n", "<C-q>", ":q!")
 
 vim.cmd.colorscheme  'midnight'
 
@@ -31,4 +31,27 @@ vim.cmd.colorscheme  'midnight'
 local builtin = require('telescope.builtin')
 vim.keymap.set('n', '<C-p>', builtin.find_files, {})
 vim.keymap.set('i', '<C-p>', builtin.find_files, {})
-vim.keymap.set('n', '<leader>ps', builtin.live_grep, {})
+vim.keymap.set('n', '<leader>lw', builtin.live_grep, {})
+
+vim.keymap.set('n', '<leader>pm', ":ProjectMgr<CR>", {})
+
+-- Harpoon
+local harpoon = require("harpoon")
+
+-- REQUIRED
+harpoon:setup()
+-- REQUIRED
+
+vim.keymap.set("n", "<leader>a", function() harpoon:list():append() end)
+vim.keymap.set("n", "<C-e>", function() harpoon.ui:toggle_quick_menu(harpoon:list()) end)
+
+-- Switch window
+vim.keymap.set("n", "<C-h>", "<C-w>h")
+vim.keymap.set("n", "<C-l>", "<C-w>l")
+vim.keymap.set("n", "<C-j>", "<C-w>j")
+vim.keymap.set("n", "<C-k>", "<C-w>k")
+
+-- Git
+vim.keymap.set("n", "<leader>gs", ":LazyGit<CR>")
+
+
