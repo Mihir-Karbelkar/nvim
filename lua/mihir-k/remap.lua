@@ -5,27 +5,27 @@ vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 
--- Keep things in the middle 
+-- Keep things in the middle
 vim.keymap.set("n", "<C-d>", "<C-d>zz")
 vim.keymap.set("n", "<C-u>", "<C-u>zz")
 vim.keymap.set("n", "n", "nzzzv")
 vim.keymap.set("n", "N", "Nzzzv")
 
 -- Ctrl + S to save
-vim.keymap.set('i', '<C-s>', '<Esc>:w<CR>i' )
+vim.keymap.set('i', '<C-s>', '<Esc>:w<CR>i')
 vim.keymap.set('n', '<C-s>', ':w<CR>')
 
 -- Replace selection with copied text
 vim.keymap.set("x", "<leader>p", [["_dP]])
 
 -- Yank to system clipboard
-vim.keymap.set({"n", "v"}, "<leader>y", [["+y]])
+vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]])
 vim.keymap.set("n", "<leader>Y", [["+Y]])
 
 -- Quit but do not quit
 vim.keymap.set("n", "<C-q>", ":q!")
 
-vim.cmd.colorscheme  'midnight'
+vim.cmd.colorscheme 'kanagawa-dragon'
 
 
 local builtin = require('telescope.builtin')
@@ -54,5 +54,3 @@ vim.keymap.set("n", "<C-k>", "<C-w>k")
 
 -- Git
 vim.keymap.set("n", "<leader>gs", ":LazyGit<CR>")
-
-
