@@ -1,25 +1,61 @@
 return {
 	"folke/neodev.nvim",
 	"folke/which-key.nvim",
-	{ "folke/neoconf.nvim",          cmd = "Neoconf" },
+	'prettier/vim-prettier',
+	{ "folke/neoconf.nvim",    cmd = "Neoconf" },
 	'williamboman/mason-lspconfig.nvim',
 	'feline-nvim/feline.nvim',
 	'nvim-tree/nvim-web-devicons',
 	{
+		-- Set lualine as statusline
 		'nvim-lualine/lualine.nvim',
-		requires = { 'nvim-tree/nvim-web-devicons', opt = true }
+		-- See `:help lualine.txt`
+		opts = {
+			options = {
+				icons_enabled = false,
+				theme = 'onedark',
+				component_separators = '|',
+				section_separators = '',
+			},
+		},
 	},
+
+	{
+		-- Add indentation guides even on blank lines
+		'lukas-reineke/indent-blankline.nvim',
+		-- Enable `lukas-reineke/indent-blankline.nvim`
+		-- See `:help ibl`
+		main = 'ibl',
+		opts = {},
+	},
+
+	-- "gc" to comment visual regions/lines
+	{ 'numToStr/Comment.nvim', opts = {} },
 	{
 		'charludo/projectmgr.nvim',
 		lazy = false, -- important!
 	},
-	{ 'dasupradyumna/midnight.nvim', lazy = false,   priority = 1000 },
 	{
 		'nvim-telescope/telescope.nvim',
 		tag = '0.1.4',
 		dependencies = { 'nvim-lua/plenary.nvim' }
 	},
-	{ 'neovim/nvim-lspconfig' },
+	{
+		-- LSP Configuration & Plugins
+		'neovim/nvim-lspconfig',
+		dependencies = {
+			-- Automatically install LSPs to stdpath for neovim
+			'williamboman/mason.nvim',
+			'williamboman/mason-lspconfig.nvim',
+
+			-- Useful status updates for LSP
+			-- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
+			{ 'j-hui/fidget.nvim', opts = {} },
+
+			-- Additional lua configuration, makes nvim stuff amazing!
+			'folke/neodev.nvim',
+		},
+	},
 	{
 		-- Autocompletion
 		'hrsh7th/nvim-cmp',
@@ -53,7 +89,7 @@ return {
 	{
 		"williamboman/mason.nvim"
 	},
-	{ 'ThePrimeagen/harpoon',          branch = 'harpoon2', requires = { "nvim-lua/plenary.nvim" } },
+	{ 'ThePrimeagen/harpoon',             branch = 'harpoon2', requires = { "nvim-lua/plenary.nvim" } },
 	{ 'christoomey/vim-tmux-navigator' },
 	{
 		"kdheepak/lazygit.nvim",
