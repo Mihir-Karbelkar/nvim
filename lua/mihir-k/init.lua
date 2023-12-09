@@ -17,3 +17,8 @@ require("mihir-k.set")
 require("mihir-k.plugins_config")
 -- set termguicolors to enable highlight groups
 vim.opt.termguicolors = true
+
+vim.opt.foldcolumn = "1"
+vim.opt.foldlevel = 99
+vim.opt.foldlevelstart = 99
+vim.opt.foldenable = true
