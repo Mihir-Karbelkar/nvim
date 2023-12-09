@@ -1,5 +1,5 @@
 -- Go to netrw
-vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
+vim.keymap.set("n", "<leader>pv", ":NvimTreeToggle<CR>")
 
 -- Move selected stuff
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
@@ -23,9 +23,8 @@ vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]])
 vim.keymap.set("n", "<leader>Y", [["+Y]])
 
 -- Quit but do not quit
-vim.keymap.set("n", "<C-q>", ":q!")
+vim.keymap.set("n", "<C-q>", ":qa!")
 
-vim.cmd.colorscheme 'kanagawa-dragon'
 
 
 local builtin = require('telescope.builtin')
@@ -54,3 +53,6 @@ vim.keymap.set("n", "<C-k>", "<C-w>k")
 
 -- Git
 vim.keymap.set("n", "<leader>gs", ":LazyGit<CR>")
+
+-- Remove Highlight
+vim.keymap.set("n", "\\", ":noh<CR>")

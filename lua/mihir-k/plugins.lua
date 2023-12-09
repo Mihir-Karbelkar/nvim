@@ -20,9 +20,22 @@ return {
 		dependencies = { 'nvim-lua/plenary.nvim' }
 	},
 	{ 'neovim/nvim-lspconfig' },
-	{ 'hrsh7th/cmp-nvim-lsp' },
-	{ 'hrsh7th/nvim-cmp' },
-	{ 'L3MON4D3/LuaSnip' },
+	{
+		-- Autocompletion
+		'hrsh7th/nvim-cmp',
+		dependencies = {
+			-- Snippet Engine & its associated nvim-cmp source
+			'L3MON4D3/LuaSnip',
+			'saadparwaiz1/cmp_luasnip',
+
+			-- Adds LSP completion capabilities
+			'hrsh7th/cmp-nvim-lsp',
+			'hrsh7th/cmp-path',
+
+			-- Adds a number of user-friendly snippets
+			'rafamadriz/friendly-snippets',
+		},
+	},
 	{ 'williamboman/mason-lspconfig.nvim' },
 	{
 		-- Add indentation guides even on blank lines
@@ -30,7 +43,12 @@ return {
 		-- Enable `lukas-reineke/indent-blankline.nvim`
 		-- See `:help ibl`
 		main = 'ibl',
-		opts = {},
+		opts = {
+			enabled = true,
+			indent = {
+				char = '|',
+			}
+		}
 	},
 	{
 		"williamboman/mason.nvim"
@@ -49,5 +67,21 @@ return {
 		end
 	},
 	{ "elentok/format-on-save.nvim" },
-	{ "rebelot/kanagawa.nvim" }
+	{ 'rose-pine/neovim',           name = 'rose-pine' },
+	{
+		'tpope/vim-commentary',
+		event = 'VeryLazy',
+	},
+	{ 'lewis6991/gitsigns.nvim' },
+	{
+		"nvim-tree/nvim-tree.lua",
+		version = "*",
+		lazy = false,
+		dependencies = {
+			"nvim-tree/nvim-web-devicons",
+		},
+		config = function()
+			require("nvim-tree").setup {}
+		end,
+	}
 }
