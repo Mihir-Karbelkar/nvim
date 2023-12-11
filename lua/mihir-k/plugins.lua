@@ -104,10 +104,14 @@ return {
 		end
 	},
 	{ "elentok/format-on-save.nvim" },
-	{ 'rose-pine/neovim',           name = 'rose-pine' },
+	{
+		"folke/tokyonight.nvim",
+		lazy = false,
+		priority = 1000,
+		opts = {},
+	},
 	{
 		'tpope/vim-commentary',
-		event = 'VeryLazy',
 	},
 	{ 'lewis6991/gitsigns.nvim' },
 	{
@@ -124,14 +128,14 @@ return {
 	-- {
 	-- 	"kevinhwang91/nvim-ufo",
 	-- 	opt = true,
-	-- 	event = { "BufReadPre" },
+	-- 	event = { "bufreadpre" },
 	-- 	wants = { "promise-async" },
 	-- 	requires = "kevinhwang91/promise-async",
 	-- 	config = function()
 	-- 		local capabilities = vim.lsp.protocol.make_client_capabilities()
-	-- 		capabilities.textDocument.foldingRange = {
-	-- 			dynamicRegistration = false,
-	-- 			lineFoldingOnly = true
+	-- 		capabilities.textdocument.foldingrange = {
+	-- 			dynamicregistration = false,
+	-- 			linefoldingonly = true
 	-- 		}
 	-- 		local language_servers = require("lspconfig").util.available_servers() -- or list servers manually like {'gopls', 'clangd'}
 	-- 		for _, ls in ipairs(language_servers) do
@@ -141,8 +145,8 @@ return {
 	-- 			})
 	-- 		end
 	-- 		require('ufo').setup()
-	-- 		vim.keymap.set("n", "zR", require("ufo").openAllFolds)
-	-- 		vim.keymap.set("n", "zM", require("ufo").closeAllFolds)
+	-- 		vim.keymap.set("n", "zr", require("ufo").openallfolds)
+	-- 		vim.keymap.set("n", "zm", require("ufo").closeallfolds)
 	-- 	end,
 	-- }
 }
