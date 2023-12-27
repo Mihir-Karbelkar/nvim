@@ -33,7 +33,6 @@ local on_attach = function(_, bufnr)
 	nmap('<leader>wa', vim.lsp.buf.add_workspace_folder, '[W]orkspace [A]dd Folder')
 	nmap('<leader>wr', vim.lsp.buf.remove_workspace_folder, '[W]orkspace [R]emove Folder')
 	nmap('<leader>wl', function()
-		print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
 	end, '[W]orkspace [L]ist Folders')
 
 	-- Create a command `:Format` local to the LSP buffer
@@ -78,9 +77,10 @@ local servers = {
 	-- gopls = {},
 	-- pyright = {},
 	-- rust_analyzer = {},
-	-- tsserver = {},
-	-- html = { filetypes = { 'html', 'twig', 'hbs'} },
-
+	tsserver = {},
+	html = { filetypes = { 'html', 'twig', 'hbs' } },
+	svelte = {},
+	cssls = {},
 	lua_ls = {
 		Lua = {
 			workspace = { checkThirdParty = false },
@@ -114,6 +114,18 @@ mason_lspconfig.setup_handlers {
 			filetypes = (servers[server_name] or {}).filetypes,
 		}
 	end,
+}
+
+require('lspconfig').svelte.setup {
+	on_attach = function(client)
+		vim.api.nvim_create_autocmd("BufWritePost", {
+			pattern = { "*.js", "*.ts" },
+			callback = function(ctx)
+				client.notify("$/onDidChangeTsOrJsFile", { uri = ctx.file })
+			end,
+		})
+	end,
+	filetypes = { 'typescript', 'javascript', 'svelte', 'html', 'css' }
 }
 
 -- [[ Configure nvim-cmp ]]

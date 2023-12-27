@@ -1,6 +1,7 @@
 return {
 	"folke/neodev.nvim",
 	"folke/which-key.nvim",
+	"nvim-treesitter/nvim-treesitter",
 	'prettier/vim-prettier',
 	{ "folke/neoconf.nvim",    cmd = "Neoconf" },
 	'williamboman/mason-lspconfig.nvim',
@@ -125,6 +126,7 @@ return {
 			require("nvim-tree").setup {}
 		end,
 	},
+	{ 'burner/vim-svelte' }
 	-- {
 	-- 	"kevinhwang91/nvim-ufo",
 	-- 	opt = true,
