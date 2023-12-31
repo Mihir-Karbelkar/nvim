@@ -11,10 +11,9 @@ if not vim.loop.fs_stat(lazypath) then
 	})
 end
 vim.opt.rtp:prepend(lazypath)
-require("lazy").setup("mihir-k.plugins")
+require("lazy").setup({ { import = "mihir-k.plugins" } })
 require("mihir-k.remap")
 require("mihir-k.set")
-require("mihir-k.plugins_config")
 -- set termguicolors to enable highlight groups
 vim.opt.termguicolors = true
 
